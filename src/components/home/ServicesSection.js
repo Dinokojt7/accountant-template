@@ -10,7 +10,7 @@ export default function ServicesSection() {
   const { services, stats } = siteData;
 
   return (
-    <section id="services" className="relative w-full py-14 px-4 sm:px-8 lg:px-12 overflow-hidden" style={{ backgroundColor: "var(--primary)" }}>
+    <section id="services" className="relative w-full py-14 px-4 sm:px-8 lg:px-12 overflow-hidden" style={{ backgroundColor: "var(--bg-warm)" }}>
       <div className="max-w-7xl mx-auto">
         {/* Eyebrow */}
         <motion.div
@@ -20,14 +20,14 @@ export default function ServicesSection() {
           className="mb-14"
         >
           <div className="flex items-center gap-3 mb-5">
-            <span className="block w-8 h-px" style={{ backgroundColor: "var(--accent)" }} />
-            <p className="text-[10px] font-semibold tracking-[0.3em] uppercase" style={{ color: "var(--accent)" }}>
+            <span className="block w-8 h-px" style={{ backgroundColor: "var(--primary)" }} />
+            <p className="text-[10px] font-semibold tracking-[0.3em] uppercase text-gray-500">
               What We Do
             </p>
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight leading-[1.05]">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-gray-900 tracking-tight leading-[1.05]">
             Comprehensive Services.<br />
-            <span style={{ color: "rgba(255,255,255,0.3)" }}>Built Around Your Needs.</span>
+            <span className="text-gray-300">Built Around Your Needs.</span>
           </h2>
         </motion.div>
 
@@ -39,16 +39,15 @@ export default function ServicesSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="grid grid-cols-1 sm:grid-cols-2 gap-px border border-white/10"
+            className="grid grid-cols-1 sm:grid-cols-2 gap-px border border-gray-200 bg-gray-200"
           >
             {services.map((svc, i) => (
               <div
                 key={i}
-                className="p-5 border-b border-white/10"
-                style={{ borderRight: i % 2 === 0 ? "1px solid rgba(255,255,255,0.1)" : "none" }}
+                className="p-5 bg-white"
               >
-                <p className="text-xs font-bold tracking-widest uppercase text-white mb-1">{svc.title}</p>
-                <p className="text-xs text-white/40 leading-relaxed">{svc.description}</p>
+                <p className="text-xs font-bold tracking-widest uppercase text-gray-900 mb-1">{svc.title}</p>
+                <p className="text-xs text-gray-400 leading-relaxed">{svc.description}</p>
               </div>
             ))}
           </motion.div>
@@ -61,15 +60,16 @@ export default function ServicesSection() {
             transition={{ duration: 0.6 }}
             className="space-y-8"
           >
-            <p className="text-white/60 leading-relaxed text-sm md:text-base">
-              We understand that every individual and business has unique financial needs. Our experienced team brings expertise in South African tax law — delivering accuracy, compliance, and strategic insight you can count on.
+            <p className="text-gray-500 leading-relaxed text-sm md:text-base">
+              Every business has unique financial needs. Our practical, profit-focused approach helps growing businesses understand their numbers, optimise cash flow, and build sustainable financial health — so you can scale with confidence.
             </p>
+
             {/* Stats */}
-            <div className="grid grid-cols-3 border border-white/10 divide-x divide-white/10">
+            <div className="grid grid-cols-3 border border-gray-200 divide-x divide-gray-200 bg-white">
               {stats.map(({ num, label }) => (
                 <div key={num} className="px-4 py-5 text-center">
-                  <p className="text-2xl sm:text-3xl font-black text-white leading-none mb-1">{num}</p>
-                  <p className="text-[10px] tracking-widest uppercase" style={{ color: "rgba(255,255,255,0.4)" }}>{label}</p>
+                  <p className="text-2xl sm:text-3xl font-black text-gray-900 leading-none mb-1">{num}</p>
+                  <p className="text-[10px] tracking-widest uppercase text-gray-400">{label}</p>
                 </div>
               ))}
             </div>
@@ -77,18 +77,18 @@ export default function ServicesSection() {
             {/* CTA */}
             <Link
               href="/#contact"
-              className="inline-flex items-center gap-2 h-11 px-8 text-xs font-bold tracking-widest uppercase text-white hover:opacity-90 transition-opacity rounded-md"
-              style={{ backgroundColor: "var(--accent)" }}
+              className="inline-flex items-center gap-2 h-11 px-8 text-sm font-medium text-white hover:opacity-90 transition-opacity rounded-full"
+              style={{ backgroundColor: "var(--primary)" }}
             >
               GET IN TOUCH
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
 
             {/* Office image */}
-            <div className="relative w-full h-52 rounded-lg overflow-hidden">
+            <div className="relative w-full h-52 rounded-lg overflow-hidden bg-gray-100">
               <Image
                 src="/images/services-office.jpg"
-                alt="Professional tax advisors at work"
+                alt="Professional financial advisors at work"
                 fill
                 className="object-cover"
               />
