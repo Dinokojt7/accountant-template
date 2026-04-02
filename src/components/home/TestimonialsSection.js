@@ -25,7 +25,7 @@ export default function TestimonialsSection() {
     <section
       id="testimonials"
       className="relative w-full py-20 px-4 sm:px-8"
-      style={{ backgroundColor: "#F4F4F4" }}
+      style={{ backgroundColor: "var(--gray-light)" }}
     >
       {/* Left arrow — pinned to section edge */}
       <button
@@ -33,7 +33,7 @@ export default function TestimonialsSection() {
         className="absolute left-4 sm:left-6 top-1/2 -translate-y-1/2 w-10 h-10 border-2 rounded-md flex items-center justify-center transition-colors z-10"
         style={{ borderColor: "var(--primary)", color: "var(--primary)" }}
         onMouseEnter={e => { e.currentTarget.style.backgroundColor = "var(--primary)"; e.currentTarget.style.color = "#fff"; }}
-        onMouseLeave={e => { e.currentTarget.style.backgroundColor = ""; e.currentTarget.style.color = "var(--primary)"; }}
+        onMouseLeave={e => { e.currentTarget.style.backgroundColor = "transparent"; e.currentTarget.style.color = "var(--primary)"; }}
       >
         <ChevronLeft className="w-4 h-4" />
       </button>
@@ -44,7 +44,7 @@ export default function TestimonialsSection() {
         className="absolute right-4 sm:right-6 top-1/2 -translate-y-1/2 w-10 h-10 border-2 rounded-md flex items-center justify-center transition-colors z-10"
         style={{ borderColor: "var(--primary)", color: "var(--primary)" }}
         onMouseEnter={e => { e.currentTarget.style.backgroundColor = "var(--primary)"; e.currentTarget.style.color = "#fff"; }}
-        onMouseLeave={e => { e.currentTarget.style.backgroundColor = ""; e.currentTarget.style.color = "var(--primary)"; }}
+        onMouseLeave={e => { e.currentTarget.style.backgroundColor = "transparent"; e.currentTarget.style.color = "var(--primary)"; }}
       >
         <ChevronRight className="w-4 h-4" />
       </button>
@@ -100,12 +100,10 @@ export default function TestimonialsSection() {
         {/* CTA */}
         <a
           href="/#contact"
-          className="inline-flex items-center justify-center h-12 px-8 border-2 rounded-md text-xs font-bold tracking-widest uppercase transition-colors"
-          style={{ borderColor: "var(--primary)", color: "var(--primary)" }}
-          onMouseEnter={e => { e.currentTarget.style.backgroundColor = "var(--primary)"; e.currentTarget.style.color = "#fff"; }}
-          onMouseLeave={e => { e.currentTarget.style.backgroundColor = ""; e.currentTarget.style.color = "var(--primary)"; }}
+          className="inline-flex items-center justify-center h-12 px-8 text-sm font-medium text-white rounded-full hover:opacity-90 transition-opacity"
+          style={{ backgroundColor: "var(--primary)" }}
         >
-          GET IN TOUCH
+          Get in touch
         </a>
       </div>
     </section>
