@@ -17,7 +17,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="w-full relative" style={{ backgroundColor: "var(--primary)" }}>
+    <footer className="w-full relative border-t border-gray-200" style={{ backgroundColor: "var(--bg-warm)" }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-16 py-14 md:py-20">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-12">
           {/* Brand */}
@@ -29,14 +29,14 @@ export default function Footer() {
           >
             <div className="relative h-16 w-44">
               <Image
-                src="/images/logo.jpg"
+                src="/images/logo.png"
                 alt={business.name}
                 fill
-                className="object-contain object-left brightness-0 invert"
+                className="object-contain object-left brightness-0"
               />
             </div>
-            <p className="text-white/50 text-sm leading-relaxed max-w-xs">{business.description}</p>
-            <p className="text-xs uppercase tracking-[0.15em] font-semibold" style={{ color: "var(--accent)" }}>
+            <p className="text-sm leading-relaxed max-w-xs" style={{ color: "#5A5A5A" }}>{business.description}</p>
+            <p className="text-xs uppercase tracking-[0.15em] font-semibold" style={{ color: "var(--primary)" }}>
               {business.tagline}
             </p>
             <div className="flex items-center gap-3 pt-1">
@@ -47,7 +47,10 @@ export default function Footer() {
                   aria-label={label}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-9 h-9 rounded-full border border-white/20 flex items-center justify-center text-white/50 hover:text-white hover:border-white transition-all"
+                  className="w-9 h-9 rounded-full border border-gray-300 flex items-center justify-center transition-all hover:border-gray-900"
+                  style={{ color: "#5A5A5A" }}
+                  onMouseEnter={e => e.currentTarget.style.color = "var(--primary)"}
+                  onMouseLeave={e => e.currentTarget.style.color = "#5A5A5A"}
                 >
                   <Icon className="w-4 h-4" />
                 </a>
@@ -63,12 +66,15 @@ export default function Footer() {
             transition={{ delay: 0.1 }}
             className="lg:col-span-2"
           >
-            <h4 className="text-xs font-bold tracking-[0.15em] uppercase text-white mb-5">Quick Links</h4>
+            <h4 className="text-xs font-bold tracking-[0.15em] uppercase mb-5" style={{ color: "var(--primary)" }}>Quick Links</h4>
             <ul className="space-y-3">
               {footer.quickLinks.map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className="group flex items-center gap-2 text-white/50 hover:text-white transition-colors text-sm">
-                    <ChevronRight className="w-3.5 h-3.5 text-white/20 transition-colors" style={{ "--group-hover-color": "var(--accent)" }} />
+                  <Link href={link.href} className="flex items-center gap-2 text-sm transition-colors" style={{ color: "#5A5A5A" }}
+                    onMouseEnter={e => e.currentTarget.style.color = "var(--primary)"}
+                    onMouseLeave={e => e.currentTarget.style.color = "#5A5A5A"}
+                  >
+                    <ChevronRight className="w-3.5 h-3.5" style={{ color: "#C0BDBA" }} />
                     {link.label}
                   </Link>
                 </li>
@@ -84,19 +90,22 @@ export default function Footer() {
             transition={{ delay: 0.2 }}
             className="lg:col-span-2"
           >
-            <h4 className="text-xs font-bold tracking-[0.15em] uppercase text-white mb-5">Legal</h4>
+            <h4 className="text-xs font-bold tracking-[0.15em] uppercase mb-5" style={{ color: "var(--primary)" }}>Legal</h4>
             <ul className="space-y-3">
               {footer.legal.map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className="group flex items-center gap-2 text-white/50 hover:text-white transition-colors text-sm">
-                    <ChevronRight className="w-3.5 h-3.5 text-white/20 transition-colors" />
+                  <Link href={link.href} className="flex items-center gap-2 text-sm transition-colors" style={{ color: "#5A5A5A" }}
+                    onMouseEnter={e => e.currentTarget.style.color = "var(--primary)"}
+                    onMouseLeave={e => e.currentTarget.style.color = "#5A5A5A"}
+                  >
+                    <ChevronRight className="w-3.5 h-3.5" style={{ color: "#C0BDBA" }} />
                     {link.label}
                   </Link>
                 </li>
               ))}
             </ul>
-            <p className="text-xs text-white/30 mt-6 pt-4 border-t border-white/10">
-              All services subject to engagement letter.<br />For research use only.
+            <p className="text-xs mt-6 pt-4 border-t border-gray-200" style={{ color: "#A0A09C" }}>
+              All services subject to engagement letter.
             </p>
           </motion.div>
 
@@ -108,22 +117,28 @@ export default function Footer() {
             transition={{ delay: 0.3 }}
             className="lg:col-span-4"
           >
-            <h4 className="text-xs font-bold tracking-[0.15em] uppercase text-white mb-5">Contact</h4>
+            <h4 className="text-xs font-bold tracking-[0.15em] uppercase mb-5" style={{ color: "var(--primary)" }}>Contact</h4>
             <div className="space-y-4">
-              <a href={`tel:${business.phone}`} className="flex items-center gap-3 text-white/50 hover:text-white transition-colors group">
-                <div className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center transition-colors">
+              <a href={`tel:${business.phone}`} className="flex items-center gap-3 transition-colors group" style={{ color: "#5A5A5A" }}
+                onMouseEnter={e => e.currentTarget.style.color = "var(--primary)"}
+                onMouseLeave={e => e.currentTarget.style.color = "#5A5A5A"}
+              >
+                <div className="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center">
                   <Phone className="w-3.5 h-3.5" />
                 </div>
                 <span className="text-sm">{business.phone}</span>
               </a>
-              <a href={`mailto:${business.email}`} className="flex items-center gap-3 text-white/50 hover:text-white transition-colors group">
-                <div className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center transition-colors">
+              <a href={`mailto:${business.email}`} className="flex items-center gap-3 transition-colors group" style={{ color: "#5A5A5A" }}
+                onMouseEnter={e => e.currentTarget.style.color = "var(--primary)"}
+                onMouseLeave={e => e.currentTarget.style.color = "#5A5A5A"}
+              >
+                <div className="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center">
                   <Mail className="w-3.5 h-3.5" />
                 </div>
                 <span className="text-sm break-all">{business.email}</span>
               </a>
-              <div className="flex items-start gap-3 text-white/50">
-                <div className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center shrink-0">
+              <div className="flex items-start gap-3" style={{ color: "#5A5A5A" }}>
+                <div className="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center shrink-0">
                   <MapPin className="w-3.5 h-3.5" />
                 </div>
                 <span className="text-sm leading-relaxed">{business.address}</span>
@@ -134,14 +149,17 @@ export default function Footer() {
       </div>
 
       {/* Bottom bar */}
-      <div className="border-t border-white/10">
+      <div className="border-t border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-16 py-5 flex flex-col md:flex-row items-center justify-between gap-3">
-          <p className="text-white/30 text-xs">
+          <p className="text-xs" style={{ color: "#A0A09C" }}>
             &copy; {new Date().getFullYear()} {business.name}. All rights reserved.
           </p>
-          <p className="text-white/30 text-xs">Designed by{" "}
-            <span style={{ color: "var(--accent)" }}>Mumbo Agency</span>
-          </p>
+          <div className="flex items-center gap-2">
+            <span className="text-xs" style={{ color: "#A0A09C" }}>Powered by</span>
+            <div className="relative h-6 w-24">
+              <Image src="/images/addin-flux.png" alt="Addin Flux" fill className="object-contain object-left brightness-0" />
+            </div>
+          </div>
         </div>
       </div>
     </footer>
