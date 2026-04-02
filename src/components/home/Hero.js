@@ -2,30 +2,50 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import siteData from "@/lib/data/site-data.json";
 
 export default function Hero() {
   const { business } = siteData;
 
   return (
-    <section className="w-full">
+    <section
+      className="relative w-full overflow-hidden"
+      style={{
+        minHeight: "clamp(560px, 78vh, 860px)",
+        borderRadius: "0 0 64px 64px",
+      }}
+    >
+      {/* Full-bleed image — object-cover, less zoomed via reduced section height */}
+      <Image
+        src="/images/hero.png"
+        alt="Financial documents and tools"
+        fill
+        priority
+        className="object-cover object-center"
+      />
+
+      {/* Left-side gradient for text legibility */}
       <div
-        className="relative w-full overflow-hidden"
+        className="absolute inset-0"
         style={{
-          backgroundColor: "var(--primary)",
-          borderRadius: "0 0 64px 64px",
-          minHeight: "clamp(380px, 60vh, 680px)",
+          background:
+            "linear-gradient(90deg, rgba(15,14,12,0.60) 0%, rgba(15,14,12,0.30) 52%, transparent 80%)",
         }}
+      />
+
+      {/* Content */}
+      <div
+        className="relative z-10 max-w-7xl mx-auto px-8 sm:px-14 md:px-20 flex flex-col justify-center"
+        style={{ minHeight: "clamp(560px, 78vh, 860px)", paddingTop: "140px", paddingBottom: "80px" }}
       >
-        {/* Content */}
-        <div className="relative h-full flex flex-col justify-center px-8 sm:px-14 md:px-20 py-20 max-w-5xl">
+        <div className="max-w-xl">
           {/* Eyebrow */}
           <motion.p
-            initial={{ opacity: 0, y: 12 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-xs font-semibold tracking-[0.3em] uppercase mb-6"
-            style={{ color: "var(--accent)" }}
+            className="text-xs font-medium tracking-[0.25em] uppercase text-white/60 mb-8"
           >
             {business.tagline}
           </motion.p>
@@ -34,54 +54,54 @@ export default function Hero() {
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black uppercase text-white leading-[1.0] tracking-tight mb-8"
+            transition={{ duration: 0.65, delay: 0.1 }}
+            className="text-white mb-8"
+            style={{
+              fontFamily: "'DM Serif Display', Georgia, serif",
+              fontSize: "clamp(34px, 7vw, 60px)",
+              lineHeight: 1.05,
+              letterSpacing: "-0.01em",
+            }}
           >
-            SERVING YOUR<br />
-            COMMUNITY WITH<br />
-            <span className="relative inline-block">
-              EXPERTISE &amp; TRUST
-              {/* Accent underline */}
-              <span
-                className="absolute left-0 -bottom-2 h-1 w-3/4"
-                style={{ backgroundColor: "var(--accent)" }}
-              />
-            </span>
+            Taxes, bookkeeping<br />
+            &amp; financial clarity,<br />
+            <em>done right.</em>
           </motion.h1>
 
-          {/* Sub-text */}
+          {/* Description */}
           <motion.p
-            initial={{ opacity: 0, y: 12 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.22 }}
-            className="text-white/60 text-sm sm:text-base max-w-lg leading-relaxed mb-10"
+            className="text-white/70 text-sm sm:text-base leading-relaxed max-w-md mb-10"
           >
             {business.description}
           </motion.p>
 
-          {/* CTA */}
+          {/* CTAs */}
           <motion.div
-            initial={{ opacity: 0, y: 12 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.32 }}
-            className="flex flex-col sm:flex-row gap-4"
+            className="flex flex-col sm:flex-row gap-3"
           >
             <Link
-              href="/#contact"
-              className="inline-flex items-center justify-center h-12 px-8 text-xs font-bold tracking-widest uppercase hover:opacity-90 transition-opacity rounded-md"
-              style={{ backgroundColor: "var(--accent)", color: "#ffffff" }}
+              href={business.whatsapp}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center h-12 px-8 text-sm font-medium text-gray-900 rounded-full hover:opacity-90 transition-opacity"
+              style={{ backgroundColor: "var(--bg-warm)" }}
             >
-              GET IN TOUCH
+              Book a consultation
             </Link>
             <Link
               href="/#services"
-              className="inline-flex items-center justify-center h-12 px-8 border-2 border-white/40 text-xs font-bold tracking-widest uppercase text-white hover:border-white transition-colors rounded-md"
+              className="inline-flex items-center justify-center h-12 px-8 border-2 border-white/40 text-sm font-medium text-white rounded-full hover:border-white/80 transition-colors"
             >
-              OUR SERVICES
+              Our services
             </Link>
           </motion.div>
         </div>
-
       </div>
     </section>
   );
