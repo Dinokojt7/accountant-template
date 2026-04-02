@@ -18,6 +18,7 @@ const NAV_LINKS = [
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [pastHero, setPastHero] = useState(false);
 
   useEffect(() => {
     if (menuOpen) document.body.style.overflow = "hidden";
@@ -25,19 +26,38 @@ export default function Header() {
     return () => { document.body.style.overflow = ""; };
   }, [menuOpen]);
 
+  useEffect(() => {
+    const onScroll = () => {
+      setPastHero(window.scrollY > window.innerHeight * 0.65);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
     <>
-      {/* Header */}
-      <header style={{ backgroundColor: "var(--primary)" }}>
+      {/* Header — fixed, floats over the hero image */}
+      <header
+        className={`fixed z-50 transition-all duration-500 ${
+          pastHero
+            ? "top-3 left-4 right-4 rounded-2xl"
+            : "top-0 left-0 right-0"
+        }`}
+        style={
+          pastHero
+            ? { backgroundColor: "rgba(15,14,12,0.4)", backdropFilter: "blur(8px)", WebkitBackdropFilter: "blur(8px)" }
+            : { background: "linear-gradient(to right, rgba(15,14,12,1) 0%, rgba(15,14,12,0.5) 18%, transparent 52%)", backdropFilter: "blur(8px)", WebkitBackdropFilter: "blur(8px)" }
+        }
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 flex items-center justify-between h-20">
           {/* Logo */}
           <Link href="/" className="relative h-14 w-40 shrink-0">
             <Image
-              src="/images/logo.jpg"
+              src="/images/logo.png"
               alt={siteData.business.name}
               fill
               priority
-              className="object-contain object-left"
+              className="object-contain object-left brightness-0 invert"
             />
           </Link>
 
@@ -49,7 +69,7 @@ export default function Header() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="text-xs font-semibold tracking-widest uppercase text-white/70 hover:text-white transition-colors"
+                  className="text-xs font-semibold tracking-widest uppercase text-white hover:text-white/70 transition-colors"
                 >
                   {link.label}
                 </Link>
@@ -59,12 +79,9 @@ export default function Header() {
             {/* LET'S TALK button */}
             <Link
               href="/#contact"
-              className="hidden sm:flex h-10 px-6 items-center border-2 border-white text-white text-xs font-bold tracking-widest uppercase hover:bg-white transition-colors rounded-md"
-              style={{ "--tw-hover-text": "var(--primary)" }}
-              onMouseEnter={e => e.currentTarget.style.color = "var(--primary)"}
-              onMouseLeave={e => e.currentTarget.style.color = ""}
+              className="hidden sm:flex h-10 px-6 items-center border-2 border-white/40 text-white text-xs font-medium tracking-wide rounded-full hover:border-white transition-colors"
             >
-              LET&apos;S TALK
+              Let&apos;s talk
             </Link>
 
             {/* Hamburger */}
@@ -81,7 +98,9 @@ export default function Header() {
 
       {/* Floating GET IN TOUCH tab */}
       <a
-        href="/#contact"
+        href={siteData.business.whatsapp}
+        target="_blank"
+        rel="noopener noreferrer"
         className="fixed right-0 top-1/2 -translate-y-1/2 z-50 flex items-center justify-center"
         style={{
           backgroundColor: "var(--accent)",
@@ -117,7 +136,7 @@ export default function Header() {
             >
               <div className="flex items-center justify-between px-6 py-5 border-b border-white/10">
                 <Link href="/" className="relative h-12 w-32" onClick={() => setMenuOpen(false)}>
-                  <Image src="/images/logo.jpg" alt={siteData.business.name} fill className="object-contain object-left brightness-0 invert" />
+                  <Image src="/images/logo.png" alt={siteData.business.name} fill className="object-contain object-left brightness-0 invert" />
                 </Link>
                 <button onClick={() => setMenuOpen(false)} className="p-2 text-white">
                   <X className="w-5 h-5" />
