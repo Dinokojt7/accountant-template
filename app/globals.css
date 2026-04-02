@@ -1,17 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap');
 @import "tailwindcss";
 
 :root {
-  --primary: #1C2D5A;
-  --accent: #CC2020;
+  --primary: #1A1A1A;
+  --accent: #1A1A1A;
   --white: #ffffff;
-  --gray-light: #F4F4F4;
+  --bg-warm: #F7F5F2;
+  --gray-light: #F0EFEB;
 }
 
 @theme inline {
   --color-primary: var(--primary);
   --color-accent: var(--accent);
+  --color-bg-warm: var(--bg-warm);
   --color-gray-light: var(--gray-light);
   --font-sans: "Inter", Arial, sans-serif;
+  --font-serif: "DM Serif Display", Georgia, serif;
 }
 
 html { overflow-x: hidden; }
