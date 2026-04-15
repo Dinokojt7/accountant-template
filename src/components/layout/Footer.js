@@ -41,7 +41,7 @@ export default function Footer() {
           >
             <div className="relative h-16 w-44">
               <Image
-                src="/images/logo.png"
+                src="/images/logo.webp"
                 alt={business.name}
                 fill
                 className="object-contain object-left brightness-0"
@@ -238,7 +238,7 @@ export default function Footer() {
             </span>
             <div className="relative h-6 w-24">
               <Image
-                src="/images/addin-flux.png"
+                src="/images/addin-flux.webp"
                 alt="Addin Flux"
                 fill
                 className="object-contain object-left brightness-0"

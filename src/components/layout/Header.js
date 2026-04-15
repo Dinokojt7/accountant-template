@@ -62,7 +62,7 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="relative h-14 w-40 shrink-0">
             <Image
-              src="/images/logo.png"
+              src="/images/logo.webp"
               alt={siteData.business.name}
               fill
               priority
@@ -150,7 +150,7 @@ export default function Header() {
                   onClick={() => setMenuOpen(false)}
                 >
                   <Image
-                    src="/images/logo.png"
+                    src="/images/logo.webp"
                     alt={siteData.business.name}
                     fill
                     className="object-contain object-left brightness-0 invert"
