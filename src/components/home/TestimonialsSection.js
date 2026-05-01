@@ -55,24 +55,23 @@ export default function TestimonialsSection() {
               className="grid grid-cols-1 lg:grid-cols-5"
             >
               {/* Left — company identity */}
-              <div
-                className="lg:col-span-2 flex flex-col items-center justify-center gap-6 py-12 px-10"
-                style={{ backgroundColor: "var(--primary)" }}
-              >
-                <div className="bg-white rounded-xl p-5 w-44 h-44 flex items-center justify-center">
+              <div className="lg:col-span-2 bg-white flex flex-col items-center justify-center gap-5 px-8 py-10">
+                <div className="relative w-full h-52">
                   <Image
                     src={t.image}
                     alt={t.company}
-                    width={140}
-                    height={140}
-                    className="object-contain w-full h-full"
+                    fill
+                    className="object-contain"
                   />
                 </div>
                 <div className="text-center">
-                  <p className="text-xs font-semibold tracking-[0.25em] uppercase text-white/40 mb-2">
+                  <p className="text-xs font-semibold tracking-[0.25em] uppercase text-gray-400 mb-1">
                     {t.companyType}
                   </p>
-                  <p className="text-base font-black text-white uppercase tracking-tight leading-snug">
+                  <p
+                    className="text-base font-black uppercase tracking-tight leading-snug"
+                    style={{ color: "var(--primary)" }}
+                  >
                     {t.company}
                   </p>
                 </div>

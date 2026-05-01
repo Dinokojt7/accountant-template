@@ -36,17 +36,13 @@ export default function TestimonialsPage() {
               className="bg-white rounded-2xl overflow-hidden flex flex-col"
             >
               {/* Logo panel */}
-              <div
-                className="flex items-center justify-center py-10 px-8"
-                style={{ backgroundColor: "var(--primary)" }}
-              >
-                <div className="bg-white rounded-xl p-4 w-36 h-36 flex items-center justify-center">
+              <div className="flex items-center justify-center bg-white px-10 pt-10 pb-6">
+                <div className="relative w-full h-48">
                   <Image
                     src={t.image}
                     alt={t.company}
-                    width={112}
-                    height={112}
-                    className="object-contain w-full h-full"
+                    fill
+                    className="object-contain"
                   />
                 </div>
               </div>
