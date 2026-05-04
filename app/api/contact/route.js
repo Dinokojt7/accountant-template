@@ -20,7 +20,7 @@ export async function POST(request) {
     });
 
     await transporter.sendMail({
-      from: `"Krol Finance Website" <${process.env.EMAIL_USER}>`,
+      from: `"Krol Finance Website" <${process.env.SMTP_USER}>`,
       to: process.env.EMAIL_USER,
       replyTo: email,
       subject: `New enquiry from ${name}${service ? ` — ${service}` : ""}`,
