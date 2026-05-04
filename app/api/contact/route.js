@@ -11,17 +11,21 @@ export async function POST(request) {
       );
     }
 
+    const port = Number(process.env.SMTP_PORT) || 587;
     const transporter = nodemailer.createTransport({
-      service: "gmail",
+      host: process.env.SMTP_HOST,
+      port,
+      secure: port === 465,
+      family: 4,
       auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS,
       },
     });
 
     await transporter.sendMail({
       from: `"Krol Finance Website" <${process.env.SMTP_USER}>`,
-      to: process.env.EMAIL_USER,
+      to: process.env.CONTACT_EMAIL,
       replyTo: email,
       subject: `New enquiry from ${name}${service ? ` — ${service}` : ""}`,
       html: `
@@ -37,7 +41,7 @@ export async function POST(request) {
             <p style="color: #666; margin: 0 0 8px; font-size: 13px;">Message</p>
             <p style="color: #1A1A1A; margin: 0; white-space: pre-wrap;">${message}</p>
           </div>
-          <p style="color: #999; font-size: 12px; margin-top: 24px;">Sent via krolfinance.vercel.app</p>
+          <p style="color: #999; font-size: 12px; margin-top: 24px;">Sent via krolfinance.co.za</p>
         </div>
       `,
     });
